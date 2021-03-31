@@ -9,7 +9,7 @@ const apiurl = "https://api.liveatspace.com"
 const primary = document.getElementById("primary")
 
 /* Show Loader */
-primary.innerHTML = '<h3 style="text-align: 'center'">Loading..</h3>'
+primary.innerHTML = '<h3 style="text-align: center">Loading..</h3>'
 /* Fetch Launches */
 async function fetchData() {
   let response = await fetch(`${apiurl}/launches`);
