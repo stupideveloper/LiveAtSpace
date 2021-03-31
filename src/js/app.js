@@ -58,12 +58,11 @@ function displaydata(data) {
       // Calculate Time
       var launchtime = DateTime.fromISO(data[i].launchdate)
       var currenttime = DateTime.now()
-			if(-86400000 > currenttime.diff(launchtime).milliseconds) {
-				var difference = currenttime.diff(launchtime).toFormat("dd:hh:mm:ss")
-			} else {
-				var difference = currenttime.diff(launchtime).toFormat("hh:mm:ss")
-			}
-      console.log(currenttime.diff(launchtime).milliseconds)
+	if(-86400000 > currenttime.diff(launchtime).milliseconds) {
+		var difference = currenttime.diff(launchtime).toFormat("dd:hh:mm:ss")
+	} else {
+		var difference = currenttime.diff(launchtime).toFormat("hh:mm:ss")
+	}
       // Add elements
       var countdown = document.createElement("div");
       container.appendChild(countdown);
