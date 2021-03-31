@@ -55,13 +55,17 @@ function displaydata(data) {
       // Calculate Time
       var launchtime = DateTime.fromISO(data[i].launchdate)
       var currenttime = DateTime.now()
-      var difference = currenttime.diff(launchtime).toFormat("hh:mm:ss")
-
+			if(-86400000 > currenttime.diff(launchtime).milliseconds) {
+				var difference = currenttime.diff(launchtime).toFormat("dd:hh:mm:ss")
+			} else {
+				var difference = currenttime.diff(launchtime).toFormat("hh:mm:ss")
+			}
+      console.log(currenttime.diff(launchtime).milliseconds)
       // Add elements
       var countdown = document.createElement("div");
       container.appendChild(countdown);
       countdown.classList.add("countdown")
-
+      
       var timeRead = document.createElement("span");
       if (difference.charAt(0) == '-') {
         timeRead.innerHTML = "T-"
@@ -123,7 +127,7 @@ function displaydata(data) {
   primary.appendChild(container);
   container.innerHTML = `
   <h2>You've Reached the End..</h2> 
-  <h3>Be sure to come back to see new lauch updates.</h3>
+  <h3>Be sure to come back to see new launch updates.</h3>
   `
 }
 fetchData()
