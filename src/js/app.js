@@ -5,7 +5,7 @@
 
 import '../css/style.css'
 import { DateTime } from "luxon";
-const apiurl = "http://localhost:1337"
+const apiurl = "http://api.liveatspace.com/"
 const primary = document.getElementById("primary")
 /* Fetch Launches */
 async function fetchData() {
