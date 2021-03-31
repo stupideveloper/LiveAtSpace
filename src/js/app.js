@@ -69,12 +69,12 @@ function displaydata(data) {
       countdown.classList.add("countdown")
       
       var timeRead = document.createElement("span");
-      if (difference.charAt(0) == '-') {
+      if (difference.includes("-")) {
         timeRead.innerHTML = "T-"
         difference = difference.replace(/-/g, "")
       } else {
         timeRead.innerHTML = "T+"
-        
+        countdown.style.backgroundColor = '#1dac1d'
       }
       countdown.appendChild(timeRead)
       var countdownDisplayElement = document.createElement("span")
