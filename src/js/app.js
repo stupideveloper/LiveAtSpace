@@ -133,4 +133,4 @@ function displaydata(data) {
   `
 }
 fetchData()
-//setInterval(fetchData, 1000);
+setInterval(fetchData, 1000);
