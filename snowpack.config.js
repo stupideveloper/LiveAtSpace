@@ -1,6 +1,6 @@
 module.exports = {
-  mount: {
-    public: { url: "/", static: true },
-    src: "/",
-  },
-};
+	mount: {
+		public: { url: "/", static: true },
+		src: "/",
+	},
+}
