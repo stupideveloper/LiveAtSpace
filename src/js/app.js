@@ -41,16 +41,15 @@ async function fetchData() {
 }
 
 /* Display Launches*/
-function displaydata(data) {
-	primary.innerHTML = "" // Clear Loading
-  
+function displaydata(data) {  
 	for (var i = 0; i < data.length; i++) { // For each json item
-
+    
 		/* Create Elements */
 		container = document.createElement("div") // Create an element
 		primary.appendChild(container)
 
 		/* Tags */
+    
 		if (data[i].tag !== "") { // Add tags
 			var tags = document.createElement("h2")
 			if (data[i].tag == "Live") {
@@ -98,7 +97,7 @@ function displaydata(data) {
 			countdown.appendChild(countdownDisplayElement)
 		}
 
-		if (firstRender) {displayTitles(container, i, data)}
+		displayTitles(container, i, data)
 		/* Button */
 		if (data[i].buttonText) {
 			var button
@@ -126,7 +125,7 @@ function displaydata(data) {
 		/* Container Classes */
 		container.classList.add("container") // Add the container class
 
-		if (firstRender) {displayBackground(container, i, data)}
+		displayBackground(container, i, data)
 
 	} 
 	/* Add end thingo */ // Display the end of the list
