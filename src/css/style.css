@@ -49,21 +49,34 @@ body, html {
   background-size: cover;
   color: white;
 }
-.grid-container > .container > h3 {
+.grid-container > .container > h4 {
   font-size: 18px;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+.grid-container > .container > h3 {
+  font-size: 24px;
+  margin-bottom: 1rem;
+}
+.grid-container > .container > span {
+  display: block;
+  color:grey;
+  padding-top: 10px;
 }
 .container > .countdown {
   margin-top: 0.2rem;
-  padding: 1rem;
+  padding: 0.6rem;
   background-color: red;
-  font-weight: 900;
+  font-weight: 700;
   width: min-content;
 }
 
 .black_button {
   padding: 1rem;
-  border: 0;
+  border-width: 0.1px;
   background-color: black;
+  border-color: rgba(255, 255, 255, 0.397);
+  border-style: solid;
   color: white;
   cursor: pointer;
   border-radius: 0;
