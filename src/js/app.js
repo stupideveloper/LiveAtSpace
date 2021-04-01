@@ -10,9 +10,6 @@ const fetchUrl = `${apiurl}/launches` // ${apiurl}/launches
 const primary = document.getElementById("primary")
 let datacache = [{}]
 
-/* Show Loader */
-primary.innerHTML = '<h3 style="text-align: center">Loading..</h3>'
-
 /* Fetch Launches */
 async function fetchData() {
   console.log('Refreshing Data..')
