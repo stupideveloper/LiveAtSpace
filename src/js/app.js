@@ -152,7 +152,7 @@ async function start() {
 function setIntervalFunction() {
   displaydata(datacache)
   setInterval(function(){ displaydata(datacache); }, 1000);
-  setInterval(fetchData, 15000);
+  setInterval(fetchData, 30000);
 }
 
 start()
