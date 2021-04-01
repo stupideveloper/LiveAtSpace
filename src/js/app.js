@@ -5,14 +5,21 @@
 
 import '../css/style.css'
 import { DateTime } from "luxon";
+import Toastify from 'toastify-js'
 const apiurl = "https://api.liveatspace.com"
 const fetchUrl = `${apiurl}/launches` // ${apiurl}/launches
 const primary = document.getElementById("primary")
-let datacache = [{}]
+let datacache = []
 
 /* Fetch Launches */
 async function fetchData() {
   console.log('Refreshing Data..')
+  Toastify({
+    text: "Refreshing Data..",
+    duration: 2000,
+    gravity: "bottom", // `top` or `bottom`
+    position: "left" // `left`, `center` or `right`
+  }).showToast();
   let response = await fetch(fetchUrl);
   var data = await response.json();
 
@@ -25,6 +32,7 @@ async function fetchData() {
     if (amili < bmili) return -1
     return amili > bmili ? 1 : 0
   })
+
   // Set data cache so we dont have to refresh as often
   datacache = data
   return (await data)
@@ -103,39 +111,38 @@ function displaydata(data) {
         var button = document.createElement("button")
         button.innerHTML = `${data[i].buttonText}` // Set button text
         const videourl = `'https://www.youtube-nocookie.com/embed/${data[i].youtubeWatchcode}'` // Set iframe url
-        button.setAttribute("onclick", `showvideo(${videourl})`)
-        button.classList.add("black_button")
-        container.appendChild(button)
+        button.setAttribute("onclick", `showvideo(${videourl})`);
+        button.classList.add("black_button");
+        container.appendChild(button);
       } else { // Deny access if stream non existant
-        var button = document.createElement("button")
-        button.innerHTML = `${data[i].buttonText}`
-        button.classList.add("black_button")
-        button.setAttribute("title", "Stream hasn't started yet.")
-        button.style.cursor = "not-allowed"
-        button.style.backgroundColor = "rgb(128, 128, 128)"
-        container.appendChild(button)
+        var button = document.createElement("button");
+        button.innerHTML = `${data[i].buttonText}`;
+        button.classList.add("black_button");
+        button.setAttribute("title", "Stream hasn't started yet.");
+        button.style.cursor = "not-allowed";
+        button.style.backgroundColor = "rgb(128, 128, 128)";
+        container.appendChild(button);
       }
     }
     /* launch Date */
     var launchdate = document.createElement("span");
-    launchdate.innerHTML = `Launch on: ${launchtime.toHTTP()}`
+    launchdate.innerHTML = `Launch on: ${launchtime.toHTTP()}`;
     container.appendChild(launchdate);
     /* Container Classes */
     container.classList.add("container"); // Add the container class
 
     /* Background Image */ // Final Background Modifications
-    container.style.background = `linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4) ), url(${apiurl}${data[i].backgroundImage.formats.medium.url})` 
-    container.style.backgroundRepeat = "no-repeat"
-    container.style.backgroundSize = "cover"
-    container.style.backgroundPositionY = `${data[i].backgroundImagePlacement}%`
+    container.style.background = `linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4) ), url(${apiurl}${data[i].backgroundImage.formats.medium.url})` ;
+    container.style.backgroundRepeat = "no-repeat";
+    container.style.backgroundSize = "cover";
+    container.style.backgroundPositionY = `${data[i].backgroundImagePlacement}%`;
 
-    
   } 
   /* Add end thingo */ // Display the end of the list
   var container = document.createElement("div");
-  container.classList.add("container")
-  container.style.color = "grey"
-  container.style.userSelect = "none"
+  container.classList.add("container");
+  container.style.color = "grey";
+  container.style.userSelect = "none";
   primary.appendChild(container);
   container.innerHTML = `
   <h3>You've Reached the End..</h3> 
@@ -143,16 +150,12 @@ function displaydata(data) {
   `
 }
 async function start() {
-  // Refresh Page Content
-  // Re-get requests
-  await fetchData()
-  setIntervalFunction()
-
+  await fetchData();
+  setIntervalFunction();
 }
 function setIntervalFunction() {
-  displaydata(datacache)
+  displaydata(datacache);
   setInterval(function(){ displaydata(datacache); }, 1000);
   setInterval(fetchData, 30000);
 }
-
 start()
