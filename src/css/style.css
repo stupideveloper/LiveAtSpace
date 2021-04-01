@@ -72,7 +72,7 @@ body, html {
 }
 
 .black_button {
-  padding: 1rem;
+  padding: 0.6rem;
   border-width: 0.1px;
   background-color: black;
   border-color: rgba(255, 255, 255, 0.397);
