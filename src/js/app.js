@@ -142,7 +142,7 @@ function displaydata(data) {
 }
 function displayBackground(container, i, data) {
 	/* Background Image */ // Final Background Modifications
-	container.style.background = `linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4) ), url(${apiurl}${data[i].backgroundImage.formats.medium.url})` 
+	container.style.background = `linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4) ), url(${data[i].backgroundImage.formats.medium.url})` 
 	container.style.backgroundRepeat = "no-repeat"
 	container.style.backgroundSize = "cover"
 	container.style.backgroundPositionY = `${data[i].backgroundImagePlacement}%`
