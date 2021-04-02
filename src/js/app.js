@@ -42,6 +42,7 @@ async function fetchData() {
 
 /* Display Launches*/
 function displaydata(data) {  
+	primary.innerHTML = ""
 	for (var i = 0; i < data.length; i++) { // For each json item
     
 		/* Create Elements */
