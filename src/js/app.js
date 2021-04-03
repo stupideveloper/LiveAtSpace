@@ -8,10 +8,12 @@ import { DateTime } from "luxon"
 import Toastify from "toastify-js"
 const apiurl = "/api"
 const fetchUrl = `${apiurl}/launches.json` // ${apiurl}/launches
-const primary = document.getElementById("primary")
+const primary = document.getElementById("launches")
+window.location = "#launches"
 let datacache = []
 //var firstRender
 var container
+
 
 /* Fetch Launches */
 async function fetchData() {
@@ -40,6 +42,7 @@ async function fetchData() {
 	return (await data)
 }
 
+
 /* Display Launches*/
 function displaydata(data) {  
 	primary.innerHTML = ""
@@ -49,24 +52,6 @@ function displaydata(data) {
 		container = document.createElement("div") // Create an element
 		primary.appendChild(container)
 
-		/* Tags */
-    
-		if (data[i].tag !== "") { // Add tags
-			var tags = document.createElement("h2")
-			if (data[i].tag == "Live") {
-				tags.innerHTML = "<div class=\"tags\"><span class=\"live\">LIVE</span></div>"
-			} 
-			else if (data[i].tag == "Replay"){
-				tags.innerHTML = "<div class=\"tags\"><span class=\"replay\">REPLAY</span></div>"
-			} 
-			else if (data[i].tag == "Soon"){
-				tags.innerHTML = "<div class=\"tags\"><span class=\"soon\">SOON</span></div>"
-			} 
-			else if (data[i].tag == "Unknown"){
-				tags.innerHTML = ""
-			}
-			container.appendChild(tags) // Append tags
-		}
 
 		/* Launch Time */
 		if (data[i].launchdate !== "") {
@@ -96,6 +81,11 @@ function displaydata(data) {
 			var countdownDisplayElement = document.createElement("span")
 			countdownDisplayElement.innerHTML = difference
 			countdown.appendChild(countdownDisplayElement)
+			var countdownDate = document.createElement("p")
+			countdownDate.innerHTML = `Launch on: ${launchtime.toHTTP()}`
+			countdownDate.classList.add("date")
+			countdown.appendChild(countdownDate)
+
 		}
 
 		displayTitles(container, i, data)
@@ -119,10 +109,6 @@ function displaydata(data) {
 				container.appendChild(button)
 			}
 		}
-		/* launch Date */
-		var launchdate = document.createElement("span")
-		launchdate.innerHTML = `Launch on: ${launchtime.toHTTP()}`
-		container.appendChild(launchdate)
 		/* Container Classes */
 		container.classList.add("container") // Add the container class
 
@@ -159,7 +145,6 @@ function displayTitles(container, i, data) {
 	subheading.innerHTML = `${data[i].description}`
 	container.appendChild(subheading)
 }
-
 async function start() {
 	await fetchData()
 	setIntervalFunction()

@@ -44,7 +44,6 @@ body, html {
   background-color: blue;
 }
 .grid-container > .container {
-  padding: 1rem;
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
@@ -58,19 +57,50 @@ body, html {
   font-size: 24px;
   margin-bottom: 1rem;
 }
+.grid-container > .container {
+  padding: 0 1rem;
+}
 .grid-container > .container > span {
   display: block;
-  color:grey;
-  padding-top: 10px;
-}
-.container > .countdown {
-  margin-top: 0.2rem;
-  padding: 0.6rem;
-  background-color: red;
-  font-weight: 700;
-  width: min-content;
+  color:rgb(255, 255, 255);
+  padding: 10px 0;
 }
 
+.container > .countdown {
+  padding: 0.6rem;
+  background-color: rgba(255, 0, 0, 0.185);
+  font-weight: 700;
+  width: min-content;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  transition: 0.4s all;
+  cursor: default;
+}
+.container > .countdown:hover {
+  background-color: rgba(255, 0, 0, 0.76);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  transition: 0.2s all;
+  position: relative;
+  width: auto;
+}
+.container > .countdown > .date {
+  visibility: collapse;
+  position: absolute;
+  transform: translateY(-65%);
+  transition: 0s all;
+  opacity: 0;
+}
+.container > button {
+  margin-bottom: 1rem;
+}
+.container > .countdown:hover > .date {
+  visibility: visible;
+  position: inherit;
+  transform: translateY(-0);
+  opacity: 1;
+  transition: 0.9s all;
+}
 .black_button {
   padding: 0.6rem;
   border-width: 0.1px;
@@ -110,7 +140,7 @@ header {
   background-color: black;
 }
 header > div {
-  padding: 1rem 0;
+  padding: 0.5rem 0;
 }
 header > div > h1{
   margin: 0;
