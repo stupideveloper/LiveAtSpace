@@ -6,11 +6,11 @@
 import "../css/style.css"
 import { DateTime } from "luxon"
 import Toastify from "toastify-js"
-const apiurl = "https://api.liveatspace.com"
-const fetchUrl = `${apiurl}/launches` // ${apiurl}/launches
+const apiurl = "/api"
+const fetchUrl = `${apiurl}/launches.json` // ${apiurl}/launches
 const primary = document.getElementById("primary")
 let datacache = []
-var firstRender = true
+//var firstRender
 var container
 
 /* Fetch Launches */
@@ -139,11 +139,11 @@ function displaydata(data) {
   <h3>You've Reached the End..</h3> 
   <h4>Be sure to come back to see new launch updates.</h4>
   `
-	firstRender = false
+	//firstRender = false
 }
 function displayBackground(container, i, data) {
 	/* Background Image */ // Final Background Modifications
-	container.style.background = `linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4) ), url(${data[i].backgroundImage.formats.medium.url})` 
+	container.style.background = `linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4) ), url(${data[i].backgroundImage})` 
 	container.style.backgroundRepeat = "no-repeat"
 	container.style.backgroundSize = "cover"
 	container.style.backgroundPositionY = `${data[i].backgroundImagePlacement}%`
